@@ -8,13 +8,17 @@
     <title>Mixtapes</title>
 </head>
 <body>
-    <h1>Awesome Mix Mod 2</h1>
+    <header>
+    <img class="logo" src="./mixtape_logo_cropped.jpg"></header>
     <main>
     <div class="song-container">
-        <h3>Browse Song Library</h3>
+        <h3 class="browse">Browse Song Library</h3>
+        <div class="song-list" style='height:15rem;width:30rem;border:0.5rem solid #d42c27;overflow:auto;'></div>
     </div>
     <div class="mixtape-container">
-        <h3><a href="http://localhost:3001/mixtapeshow.html">Browse All Mixtapes</a></h3>
+        <h3>Browse All Mixtapes</h3>
+        <div class="mixtape-names" style='height:15rem;width:30rem;border:0.5rem solid #d42c27;overflow:auto;'></div>
+        <br></br>
         <form method="POST" action="http://localhost:3000/mixtapes">
         <h3>Create a New Mixtape</h3>
         <input class="mixtape-input" type="text" name="name" placeholder="e.g. Road Trip, Christmas, etc">

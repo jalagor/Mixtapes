@@ -4,6 +4,7 @@ const mixtapeid = searchParams.get('id')
 fetch(`http://localhost:3000/mixtapes/${mixtapeid}`)
     .then(response=>response.json())
     .then(mixtape=>{
+        const header = document.querySelector('header')
         const mixtapeContainer = document.querySelector('.mixtape')
         const h1 = document.createElement('h1')
         const homeButton = document.createElement('h5')
@@ -13,19 +14,21 @@ fetch(`http://localhost:3000/mixtapes/${mixtapeid}`)
         //     deleteMixtape(mixtape.id)
         // })
         h1.innerText = mixtape.name
+        h1.className = "mixtape-name"
         // h1.appendChild(deleteMixTape)
         homeButton.className = "home-button"
         homeButton.innerHTML = `<a href="http://localhost:3001">Go to Homepage</a>`
-        mixtapeContainer.append(h1, homeButton)
+        header.appendChild(h1)
         mixtape.songs.map(song=>{
-            const list = document.createElement('ul')
+            const thisMixtapeSongContainer = document.querySelector('.this-mixtapes-songs')
             const songItem = document.createElement('li')
             // const deleteButton = document.createElement('button')
-            list.className = "song-list"
+            songItem.className = "song-title"
             songItem.innerText = song.title
 
-            list.appendChild(songItem)
-            mixtapeContainer.append(list)
+            // list.appendChild(songItem)
+            thisMixtapeSongContainer.appendChild(songItem)
+            // mixtapeContainer.append(songItem)
         })
     })
 
@@ -34,8 +37,8 @@ fetch('http://localhost:3000/songs')
     .then(songs=>songs.map(selectSongs))
 
 function selectSongs(song){
-    const songContainer = document.querySelector('.song-container')
-    const songName = document.createElement('h4')
+    const songContainer = document.querySelector('.all-songs')
+    const songName = document.createElement('li')
     const songButton = document.createElement('button')
     songButton.innerText = "Add to Mixtape"
     songName.innerText = song.title
@@ -72,6 +75,7 @@ function searchSongs(){
         }
     })
 }
+
 
 // function deleteMixtape(mixtape){
 //     fetch(`http://localhost:3000/mixtapes/${mixtape}`, {

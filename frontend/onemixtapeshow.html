@@ -5,20 +5,32 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="onemixtapeshow.css"/>
+    <link href="https://fonts.googleapis.com/css?family=Raleway|Reenie+Beanie&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Permanent+Marker&display=swap" rel="stylesheet">
     <title>Edit/View Mixtape</title>
 </head>
 <body>
-    <div class="mixtape"></div>
+    <header><img class="logo" src="./mixtape_logo_cropped3.jpg"></header>
+    <div id="navbar">
+        <a href="http://localhost:3001">Go to Homepage</a>
+    </div>
     <br></br>
+    <div class="homepage"></div>
+    <main>
     <div class="song-container">
         <form method="GET" action="http://localhost:3001/onemixtapeshow.html">
-        <label class="search-label">Search Songs to Add to Mixtape:</label>
-        <input type="text" class="song-search" name="title"
+        <label class="search-label">Search Songs:</label>
+        <input type="text" class="song-search" name="title" onkeyup="searchSongs()"
         placeholder="e.g. Truth Hurts, Bohemian Rhapsody, etc..">
-        <button type="button" onclick="searchSongs()">Search</button>
         </form>
-        <div class="not-found"></div>
+        <br></br>
+        <div class="all-songs" style='height:15rem;width:20rem;border:0.5rem solid #d42c27;overflow:auto;'></div>
     </div>
+    <div class="mixtape">
+        <h3 class="view-songs">Songs on Mixtape</h3>
+        <div class="this-mixtapes-songs"></div>
+    </div>
+</main>
     
 
     <script src="onemixtapeshow.js"></script>
