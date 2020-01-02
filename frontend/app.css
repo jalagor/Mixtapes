@@ -8,3 +8,7 @@ main {
 .mixtape-input {
     width: 12rem
 }
+
+.class-list {
+    list-style: none;
+}

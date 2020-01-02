@@ -6,27 +6,24 @@ fetch(`http://localhost:3000/mixtapes/${mixtapeid}`)
     .then(mixtape=>{
         const mixtapeContainer = document.querySelector('.mixtape')
         const h1 = document.createElement('h1')
-        const deleteMixTape = document.createElement('button')
-        deleteMixTape.innerText = "Delete Mixtape"
-        deleteMixTape.addEventListener('click', ()=>{
-            event.target.parentNode.remove()
-            deleteMixtape(mixtape.id)
-        })
+        const homeButton = document.createElement('h5')
+        // const deleteMixTape = document.createElement('button')
+        // deleteMixTape.innerText = "Delete Mixtape"
+        // deleteMixTape.addEventListener('click', ()=>{
+        //     deleteMixtape(mixtape.id)
+        // })
         h1.innerText = mixtape.name
-        h1.appendChild(deleteMixTape)
-        mixtapeContainer.appendChild(h1)
+        // h1.appendChild(deleteMixTape)
+        homeButton.className = "home-button"
+        homeButton.innerHTML = `<a href="http://localhost:3001">Go to Homepage</a>`
+        mixtapeContainer.append(h1, homeButton)
         mixtape.songs.map(song=>{
             const list = document.createElement('ul')
             const songItem = document.createElement('li')
-            const deleteButton = document.createElement('button')
+            // const deleteButton = document.createElement('button')
             list.className = "song-list"
             songItem.innerText = song.title
-            deleteButton.innerText = "Delete from Mixtape"
-            deleteButton.addEventListener('click', ()=>{
-                event.target.parentNode.remove()
-                // findMixtapeSong(song.id)
-            })
-            songItem.appendChild(deleteButton)
+
             list.appendChild(songItem)
             mixtapeContainer.append(list)
         })
@@ -76,11 +73,11 @@ function searchSongs(){
     })
 }
 
-function deleteMixtape(mixetapeid){
-    fetch(`http://localhost:3000/mixtapes/${mixtapeid}`, {
-        method: 'DELETE'
-    })
-}
+// function deleteMixtape(mixtape){
+//     fetch(`http://localhost:3000/mixtapes/${mixtape}`, {
+//         method: 'DELETE'
+//     })
+// }
 
 
 // function findMixtapeSong(songid){
@@ -99,14 +96,14 @@ function deleteMixtape(mixetapeid){
 //     })
 // }
 
-function notFound(){
-    const notFound = document.querySelector('.not-found')
-    const notFoundText = document.createElement('h3')
-    notFound.innerText = "This song does not exist in our database."
-    notFound.appendChild(notFound)
-    notFound.style.display = ""
-}
+// function notFound(){
+//     const notFound = document.querySelector('.not-found')
+//     const notFoundText = document.createElement('h3')
+//     notFound.innerText = "This song does not exist in our database."
+//     notFound.appendChild(notFound)
+//     notFound.style.display = ""
+// }
 
-function reloadPage(){
-    window.location.reload();
-}
+// function reloadPage(){
+//     window.location.reload();
+// }

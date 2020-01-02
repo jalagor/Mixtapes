@@ -24,7 +24,6 @@ class MixtapesController < ApplicationController
     def destroy
         mixtape = Mixtape.find(params[:id])
         mixtape.destroy
-        redirect_to 'http://localhost:3001/mixtapeshow.html'
     end
 
     private

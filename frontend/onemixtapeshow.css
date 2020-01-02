@@ -16,3 +16,8 @@
 .song-list {
     list-style: none;
 }
+
+.home-button {
+    position: absolute;
+    right: 10%;
+}

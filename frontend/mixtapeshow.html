@@ -9,8 +9,18 @@
 </head>
 <body>
     <h1>Mixtapes</h1>
+    <div class="homepage">
+        <a href="http://localhost:3001">Go to Homepage</a>
+    </div>
     <main>
         <div class="mixtape-container"></div>
+        <div class="add-mixtape">
+            <form method="POST" action="http://localhost:3000/mixtapes">
+                <h3>Create a New Mixtape</h3>
+                <input class="mixtape-input" type="text" name="name" placeholder="e.g. Road Trip, Christmas, etc">
+                <input type="submit" value="Add Mixtape">
+                </form>
+        </div>
 
     </main>
 
