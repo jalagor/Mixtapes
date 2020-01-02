@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="app.css"/>
+    <title>Mixtapes</title>
+</head>
+<body>
+    <h1>Awesome Mix Mod 2</h1>
+    <main>
+    <div class="song-container"></div>
+    <div class="mixtape-container">
+        <h3><a href="http://localhost:3001/mixtapeshow.html">Browse All Mixtapes</a></h3>
+        <form method="POST" action="http://localhost:3000/mixtapes">
+        <h3>Create a New Mixtape</h3>
+        <input class="mixtape-input" type="text" name="name" placeholder="e.g. Road Trip, Christmas, etc">
+        <input type="submit" value="Add Mixtape">
+        </form>
+    </div>
+    </main>
+    
+    <script src="app.js"></script>
+</body>
+</html>

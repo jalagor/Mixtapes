@@ -1,0 +1,18 @@
+.not-found{
+    display: none;
+}
+
+.song-search {
+    width: 15rem
+}
+
+
+
+.song-container {
+    display: block;
+    justify-content: center;
+}
+
+.song-list {
+    list-style: none;
+}

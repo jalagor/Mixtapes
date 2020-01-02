@@ -11,24 +11,27 @@ class MixtapesController < ApplicationController
     end
 
     def create
-        mixtape = Mixtape.create(name: params[:name])
-        render json: mixtape, include: :songs
+        mixtape = Mixtape.create(mixtape_params)
+        redirect_to "http://localhost:3001/mixtapeshow.html"
     end
 
     def update
         mixtape = Mixtape.find(params[:id])
         mixtape.update(mixtape_params)
-        render json: mixtape
+        render json: mixtape, include: :songs
     end
 
     def destroy
         mixtape = Mixtape.find(params[:id])
         mixtape.destroy
+        redirect_to 'http://localhost:3001/mixtapeshow.html'
     end
 
     private
 
     def mixtape_params
-        params.permit(:name)
+        params.permit(
+            :name
+            )
     end
 end

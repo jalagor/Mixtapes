@@ -1,0 +1,10 @@
+
+
+main {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.mixtape-input {
+    width: 12rem
+}
