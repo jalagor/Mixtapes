@@ -1,10 +1,97 @@
 
 
 main {
-    display: flex;
+    display: inline-block;
     justify-content: space-evenly;
 }
 
 .mixtape-input {
     width: 12rem
+}
+
+.class-list {
+    list-style: none;
+}
+
+.logo {
+    width: 40%;
+}
+
+header {
+    display: flex;
+    justify-content: center;
+    background-color: black;
+    background-size: 100%;
+    background-image: url("./cropped_tape_player.jpg");
+    position: sticky;
+    top: 0;
+}
+
+.mixtape-container {
+    border: solid;
+    border-color: black;
+    border-top: none;
+    text-align: center;
+    border-left: none;
+    border-right: none;
+    width: 50%;
+    padding-bottom: 4rem;
+}
+
+.one-mixtape-container {
+    border: solid black;
+    width: 25rem;
+    height: 10rem;
+    display: inline-block;
+    background-image: url('./mixtape_logo_cropped3.jpg');
+    background-size: 100%;
+    padding-top: 2.5rem;
+}
+
+.mixtape-names {
+    display: inline-block;
+    font-family: 'Raleway', sans-serif;
+    text-align: center;
+}
+
+.song-container {
+    border: solid;
+    border-color: black;
+    border-top: none;
+    text-align: center;
+    width: 50%;
+    border-left: none;
+    justify-content: center;
+}
+
+main {
+    display: flex;
+    justify-content: center;
+}
+
+.browse {
+    text-align: center;
+}
+
+.song-name {
+    list-style: none;
+}
+
+.song-list {
+    display: inline-block;
+    font-family: 'Raleway', sans-serif;
+}
+
+h3 {
+    font-family: 'Raleway', sans-serif;
+    color: #556057
+}
+
+.crud-container {
+    display: flex;
+    justify-content: center;
+}
+
+.delete-button {
+    justify-content: flex-end;
 }

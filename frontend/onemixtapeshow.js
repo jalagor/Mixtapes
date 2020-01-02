@@ -4,31 +4,31 @@ const mixtapeid = searchParams.get('id')
 fetch(`http://localhost:3000/mixtapes/${mixtapeid}`)
     .then(response=>response.json())
     .then(mixtape=>{
+        const header = document.querySelector('header')
         const mixtapeContainer = document.querySelector('.mixtape')
         const h1 = document.createElement('h1')
-        const deleteMixTape = document.createElement('button')
-        deleteMixTape.innerText = "Delete Mixtape"
-        deleteMixTape.addEventListener('click', ()=>{
-            event.target.parentNode.remove()
-            deleteMixtape(mixtape.id)
-        })
+        const homeButton = document.createElement('h5')
+        // const deleteMixTape = document.createElement('button')
+        // deleteMixTape.innerText = "Delete Mixtape"
+        // deleteMixTape.addEventListener('click', ()=>{
+        //     deleteMixtape(mixtape.id)
+        // })
         h1.innerText = mixtape.name
-        h1.appendChild(deleteMixTape)
-        mixtapeContainer.appendChild(h1)
+        h1.className = "mixtape-name"
+        // h1.appendChild(deleteMixTape)
+        homeButton.className = "home-button"
+        homeButton.innerHTML = `<a href="http://localhost:3001">Go to Homepage</a>`
+        header.appendChild(h1)
         mixtape.songs.map(song=>{
-            const list = document.createElement('ul')
+            const thisMixtapeSongContainer = document.querySelector('.this-mixtapes-songs')
             const songItem = document.createElement('li')
-            const deleteButton = document.createElement('button')
-            list.className = "song-list"
+            // const deleteButton = document.createElement('button')
+            songItem.className = "song-title"
             songItem.innerText = song.title
-            deleteButton.innerText = "Delete from Mixtape"
-            deleteButton.addEventListener('click', ()=>{
-                event.target.parentNode.remove()
-                // findMixtapeSong(song.id)
-            })
-            songItem.appendChild(deleteButton)
-            list.appendChild(songItem)
-            mixtapeContainer.append(list)
+
+            // list.appendChild(songItem)
+            thisMixtapeSongContainer.appendChild(songItem)
+            // mixtapeContainer.append(songItem)
         })
     })
 
@@ -37,8 +37,8 @@ fetch('http://localhost:3000/songs')
     .then(songs=>songs.map(selectSongs))
 
 function selectSongs(song){
-    const songContainer = document.querySelector('.song-container')
-    const songName = document.createElement('h4')
+    const songContainer = document.querySelector('.all-songs')
+    const songName = document.createElement('li')
     const songButton = document.createElement('button')
     songButton.innerText = "Add to Mixtape"
     songName.innerText = song.title
@@ -76,11 +76,12 @@ function searchSongs(){
     })
 }
 
-function deleteMixtape(mixetapeid){
-    fetch(`http://localhost:3000/mixtapes/${mixtapeid}`, {
-        method: 'DELETE'
-    })
-}
+
+// function deleteMixtape(mixtape){
+//     fetch(`http://localhost:3000/mixtapes/${mixtape}`, {
+//         method: 'DELETE'
+//     })
+// }
 
 
 // function findMixtapeSong(songid){
@@ -99,14 +100,14 @@ function deleteMixtape(mixetapeid){
 //     })
 // }
 
-function notFound(){
-    const notFound = document.querySelector('.not-found')
-    const notFoundText = document.createElement('h3')
-    notFound.innerText = "This song does not exist in our database."
-    notFound.appendChild(notFound)
-    notFound.style.display = ""
-}
+// function notFound(){
+//     const notFound = document.querySelector('.not-found')
+//     const notFoundText = document.createElement('h3')
+//     notFound.innerText = "This song does not exist in our database."
+//     notFound.appendChild(notFound)
+//     notFound.style.display = ""
+// }
 
-function reloadPage(){
-    window.location.reload();
-}
+// function reloadPage(){
+//     window.location.reload();
+// }

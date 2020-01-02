@@ -12,7 +12,7 @@ class MixtapesController < ApplicationController
 
     def create
         mixtape = Mixtape.create(mixtape_params)
-        redirect_to "http://localhost:3001/mixtapeshow.html"
+        redirect_to "http://localhost:3001"
     end
 
     def update
@@ -24,7 +24,6 @@ class MixtapesController < ApplicationController
     def destroy
         mixtape = Mixtape.find(params[:id])
         mixtape.destroy
-        redirect_to 'http://localhost:3001/mixtapeshow.html'
     end
 
     private
