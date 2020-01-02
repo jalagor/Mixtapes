@@ -9,11 +9,12 @@ require 'rest-client'
 require 'pry'
 
 Song.destroy_all
+Mixtape.destroy_all
 
 def song_list 
-    page_numbers = (0..5).to_a
+    page_numbers = [0, 200, 400, 600, 800]
     page_numbers.map do |page_number|
-    response = RestClient.get("http://api.napster.com/v2.2/tracks/top?apikey=YTkxZTRhNzAtODdlNy00ZjMzLTg0MWItOTc0NmZmNjU4Yzk4&limit=200&offset=#{0}&range=year")
+    response = RestClient.get("http://api.napster.com/v2.2/tracks/top?apikey=YTkxZTRhNzAtODdlNy00ZjMzLTg0MWItOTc0NmZmNjU4Yzk4&limit=200&offset=#{page_number}&range=year")
     result = JSON.parse(response)
 
     result["tracks"].map do |song|

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="onemixtapeshow.css"/>
+    <title>Edit/View Mixtape</title>
+</head>
+<body>
+    <div class="mixtape"></div>
+    <br></br>
+    <div class="song-container">
+        <form method="GET" action="http://localhost:3001/onemixtapeshow.html">
+        <label class="search-label">Search Songs to Add to Mixtape:</label>
+        <input type="text" class="song-search" name="title"
+        placeholder="e.g. Truth Hurts, Bohemian Rhapsody, etc..">
+        <button type="button" onclick="searchSongs()">Search</button>
+        </form>
+        <div class="not-found"></div>
+    </div>
+    
+
+    <script src="onemixtapeshow.js"></script>
+</body>
+</html>

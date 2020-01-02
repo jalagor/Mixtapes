@@ -2,12 +2,22 @@ class MixtapeSongsController < ApplicationController
 
     def index
         mixtapesongs = MixtapeSong.all
-        render json: mixtapesongs, include: :song
+        render json: mixtapesongs
+    end
+
+    def show
+        mixtapessong = MixtapeSong.find(params[:id])
+        render json: mixtapesong
     end
 
     def create
         mixtapesong = MixtapeSong.create(song_id: params[:song_id], mixtape_id: params[:mixtape_id])
-        render json: mixtapesong, include: :song
+        render json: mixtapesong
+    end
+
+    def destroy
+        mixtapesong = MixtapeSong.where(song_id: params[:song_id], mixtape_id: params[:mixtape_id])
+        mixtapesong.destroy_all
     end
 
 end
