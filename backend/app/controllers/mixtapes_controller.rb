@@ -17,7 +17,7 @@ class MixtapesController < ApplicationController
 
     def update
         mixtape = Mixtape.find(params[:id])
-        mixtape.update(mixtape_params)
+        mixtape.update(name: params[:name])
         render json: mixtape, include: :songs
     end
 

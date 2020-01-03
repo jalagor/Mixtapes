@@ -26,7 +26,7 @@ fetch('http://localhost:3000/mixtapes')
         deleteButton.addEventListener('click', () => {
             deleteMixtape(mixtape.id)
         })
-        updateName.addEventListener('click', ()=>{
+        updateName.addEventListener('click', () => {
             updateMixtape(mixtape.id)
         })
         
@@ -38,13 +38,15 @@ fetch('http://localhost:3000/mixtapes')
 function updateMixtape(mixtape){
     const updateName = document.querySelector('.update-mixtape-name')
     const userInput = updateName.value 
+    console.log('hello')
+    console.log(userInput)
     fetch(`http://localhost:3000/mixtapes/${mixtape}`, {
         method: 'PUT',
         headers:{
             'Content-Type':'application/json',
             'Accept':'application/json'
           },
-          body:JSON.stringify({name: userInput })
+          body:JSON.stringify({name: userInput})
     })
 }
 

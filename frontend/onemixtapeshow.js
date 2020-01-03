@@ -24,7 +24,7 @@ fetch(`http://localhost:3000/mixtapes/${mixtapeid}`)
             const songItem = document.createElement('li')
             const playButton = document.createElement('button')
             const pauseButton = document.createElement('button')
-            // const deleteButton = document.createElement('button')
+            const deleteButton = document.createElement('button')
             songItem.className = "song-title"
             songItem.innerText = `${song.title} - ${song.artist}    `
 
@@ -36,8 +36,15 @@ fetch(`http://localhost:3000/mixtapes/${mixtapeid}`)
             pauseButton.className = "pause-button"
             pauseButton.addEventListener('click', () => {
                 pauseAudio(song)})
+
+            // deleteButton.innerText = "delete"
+            deleteButton.className = "delete-button"
+            deleteButton.addEventListener('click', () => {
+                event.target.parentNode.remove()
+                findMixtapeSong(song.id)
+            })
             // list.appendChild(songItem)
-            songItem.append(playButton, pauseButton)
+            songItem.append(playButton, pauseButton, deleteButton)
             thisMixtapeSongContainer.appendChild(songItem)
             // mixtapeContainer.append(songItem)
         })
@@ -92,7 +99,7 @@ function selectSongs(song){
     pauseButton.addEventListener('click', () => {
         pauseAudio(song)})
 
-    songName.append(songButton, playButton, pauseButton)
+    songName.append(playButton, pauseButton, songButton)
         songButton.addEventListener('click', ()=>{
             addSong(song.id)
         })
@@ -132,21 +139,20 @@ function searchSongs(){
 // }
 
 
-// function findMixtapeSong(songid){
-//     fetch(`http://localhost:3000/mixtape_songs`)
-//         .then(response=>response.json())
-//         .then(mixtapesongs=>mixtapesongs.find(mixtapesong=>{
-//             mixtapesong.song_id == songid && mixtapesong.mixtape_id == mixtapeid
-//             console.log(mixtapesong.id)
-//             deleteSong(mixtapesong.id)
-//         }))
-// }
+function findMixtapeSong(songid){
+    fetch(`http://localhost:3000/mixtape_songs`)
+        .then(response=>response.json())
+        .then(mixtapesongs=>mixtapesongs.find(mixtapesong=>{
+            if (mixtapesong.song_id == songid && mixtapesong.mixtape_id == mixtapeid)
+            {deleteSong(mixtapesong.id)}
+        }))
+}
 
-// function deleteSong(songid){
-//     fetch(`http://localhost:3000/mixtape_songs/${songid}`, {
-//         method: 'DELETE'
-//     })
-// }
+function deleteSong(msid){
+    fetch(`http://localhost:3000/mixtape_songs/${msid}`, {
+        method: 'DELETE'
+    })
+}
 
 // function notFound(){
 //     const notFound = document.querySelector('.not-found')
