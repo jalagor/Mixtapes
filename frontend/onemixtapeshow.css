@@ -129,3 +129,12 @@ main {
     height: 1rem;
     border: none;
 }
+
+.delete-button {
+    background-image: url('./minus_sign.png');
+    background-size: 100%;
+    background-position: center;
+    width: 1rem;
+    height: 1rem;
+    border: none;
+}

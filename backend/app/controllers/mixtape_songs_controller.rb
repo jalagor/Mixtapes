@@ -16,8 +16,8 @@ class MixtapeSongsController < ApplicationController
     end
 
     def destroy
-        mixtapesong = MixtapeSong.where(song_id: params[:song_id], mixtape_id: params[:mixtape_id])
-        mixtapesong.destroy_all
+        mixtapesong = MixtapeSong.find(params[:id])
+        mixtapesong.destroy
     end
 
 end

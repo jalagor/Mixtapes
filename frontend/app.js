@@ -83,7 +83,7 @@ function pauseAudio(song){
 
 fetch('http://localhost:3000/mixtapes')
     .then(response=>response.json())
-    .then(mixtapes=>mixtapes.sort(aToZMixtape).map(mixtapeNames))
+    .then(mixtapes=>mixtapes.map(mixtapeNames))
 
 function mixtapeNames(mixtape){
         const mixtapeContainer = document.querySelector('.mixtape-names')
@@ -108,25 +108,25 @@ function mixtapeNames(mixtape){
                 event.target.parentNode.parentNode.remove()
             deleteMixtape(mixtape.id)
         })
-        updateName.addEventListener('click', ()=>{
-            updateMixtape(mixtape.id)
+        updateName.addEventListener('click', (event)=>{
+            updateMixtape(event, mixtape.id)
         })
+
         
         crudContainer.append(nameInput, updateName, deleteButton)
         mixtapeName.appendChild(crudContainer)
         mixtapeContainer.appendChild(mixtapeName)
 }
 
-function updateMixtape(mixtape){
-        const updateName = document.querySelector('.update-mixtape-name')
-        const userInput = updateName.value 
-        fetch(`http://localhost:3000/mixtapes/${mixtape}`, {
+function updateMixtape(event, mixtapeId){
+        const updateValue = event.target.parentNode.querySelector('.update-mixtape-name').value
+        fetch(`http://localhost:3000/mixtapes/${mixtapeId}`, {
             method: 'PUT',
             headers:{
                 'Content-Type':'application/json',
                 'Accept':'application/json'
               },
-              body:JSON.stringify({name: userInput })
+              body:JSON.stringify({name: updateValue})
         })
     }
     
