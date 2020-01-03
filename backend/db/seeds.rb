@@ -18,7 +18,7 @@ def song_list
     result = JSON.parse(response)
 
     result["tracks"].map do |song|
-        Song.create(title: song["name"], artist: song["artistName"])
+        Song.create(title: song["name"], artist: song["artistName"], preview: song["previewURL"])
     end
     end
 end
