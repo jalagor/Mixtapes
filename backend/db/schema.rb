@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_30_202603) do
+ActiveRecord::Schema.define(version: 2020_01_03_164003) do
 
   create_table "mixtape_songs", force: :cascade do |t|
     t.integer "song_id", null: false
@@ -32,6 +32,7 @@ ActiveRecord::Schema.define(version: 2019_12_30_202603) do
     t.string "artist"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "preview"
   end
 
   add_foreign_key "mixtape_songs", "mixtapes"

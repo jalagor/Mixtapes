@@ -20,7 +20,7 @@ header {
     top: 0;
     width: 100%;
     z-index: 4;
-    margin: 0.7rem;
+    margin: 0.4rem;
 }
 
 #navbar a {
@@ -31,9 +31,10 @@ header {
 
 .mixtape-name {
     position: absolute;
-    margin-top: 4.5%;
+    margin-top: 4%;
     font-family: 'Permanent Marker', cursive;
     font-size: 3em;
+    color: #556057
 }
 
 .homepage {
@@ -48,7 +49,6 @@ main {
 }
 
 .mixtape {
-    border: solid black;
     width: 50%;
     border-left: none;
     text-align: center;
@@ -58,14 +58,16 @@ main {
 .view-songs {
     font-family: 'Raleway', sans-serif;
     font-size: 30px;
+    color: #556057
 }
 
 .this-mixtapes-songs {
     height: 15rem;
-    width: 20rem;
+    width: 40rem;
     border: 0.5rem solid #d42c27;
     overflow: auto;
     display: inline-block;
+    background-color: white;
 }
 
 
@@ -75,27 +77,55 @@ main {
 
 
 .song-container {
-    border: solid black;
     width: 50%;
     text-align: center;
-    padding: 3.5rem;
+    padding: 3.4rem;
 }
 
 .song-title {
     list-style: none;
     font-family: 'Raleway', sans-serif;
+    font-size: 1.3rem;
 }
 
 .all-songs{
     display: inline-block;
+    background-color: white;
 }
 
 .song-name {
     list-style: none;
     font-family: 'Raleway', sans-serif;
+    font-size: 1.3rem;
 }
 
 .search-label {
     font-weight: bold;
     font-family: 'Raleway', sans-serif;
+    color: #556057
+}
+
+.play-button {
+    background-image: url('https://cdn2.iconfinder.com/data/icons/everything-but-the-kitchen-sink-2/100/common-05-512.png');
+    background-size: 100%;
+    width: 1rem;
+    height: 1rem;
+    border: none;
+}
+
+.pause-button {
+    background-image: url('./circled_pause.png');
+    background-size: 100%;
+    width: 1rem;
+    height: 1rem;
+    border: none;
+}
+
+.song-button {
+    background-image: url('https://cdn4.iconfinder.com/data/icons/user-interface-131/32/add-512.png');
+    background-size: 100%;
+    background-position: center;
+    width: 1rem;
+    height: 1rem;
+    border: none;
 }

@@ -19,32 +19,80 @@ fetch(`http://localhost:3000/mixtapes/${mixtapeid}`)
         homeButton.className = "home-button"
         homeButton.innerHTML = `<a href="http://localhost:3001">Go to Homepage</a>`
         header.appendChild(h1)
-        mixtape.songs.map(song=>{
+        mixtape.songs.sort(aToZ).map(song=>{
             const thisMixtapeSongContainer = document.querySelector('.this-mixtapes-songs')
             const songItem = document.createElement('li')
+            const playButton = document.createElement('button')
+            const pauseButton = document.createElement('button')
             // const deleteButton = document.createElement('button')
             songItem.className = "song-title"
-            songItem.innerText = song.title
+            songItem.innerText = `${song.title} - ${song.artist}    `
 
+            playButton.type = "button"
+            playButton.className = "play-button"
+            playButton.addEventListener('click', ()=>{
+                playAudio(song)})
+            pauseButton.type = "button"
+            pauseButton.className = "pause-button"
+            pauseButton.addEventListener('click', () => {
+                pauseAudio(song)})
             // list.appendChild(songItem)
+            songItem.append(playButton, pauseButton)
             thisMixtapeSongContainer.appendChild(songItem)
             // mixtapeContainer.append(songItem)
         })
     })
 
+function aToZ(a, b){
+        if (a.title < b.title){return -1} 
+        else if (a.title > b.title){return 1}
+        else {return 0}
+}
+
+const sound = new Audio()
+
+function playAudio(song){
+    sound.src = `${song.preview}`
+    sound.play()
+}
+
+function pauseAudio(song){
+    sound.src = `${song.preview}`
+    sound.pause()
+}
+
 fetch('http://localhost:3000/songs')
     .then(response=>response.json())
-    .then(songs=>songs.map(selectSongs))
+    .then(songs=>songs.sort(aToZ).map(selectSongs))
+
+function aToZ(a, b){
+        if (a.title < b.title){return -1} 
+        else if (a.title > b.title){return 1}
+        else {return 0}
+}
 
 function selectSongs(song){
     const songContainer = document.querySelector('.all-songs')
     const songName = document.createElement('li')
     const songButton = document.createElement('button')
-    songButton.innerText = "Add to Mixtape"
-    songName.innerText = song.title
+    const playButton = document.createElement('button')
+    const pauseButton = document.createElement('button')
+    // songButton.innerText = "Add to Mixtape"
+    songButton.className = "song-button"
+    songName.innerText = `${song.title} - ${song.artist}    `
     songName.value = song.id
     songName.className = "song-name"
-    songName.appendChild(songButton)
+
+    playButton.type = "button"
+    playButton.className = "play-button"
+    playButton.addEventListener('click', ()=>{
+        playAudio(song)})
+    pauseButton.type = "button"
+    pauseButton.className = "pause-button"
+    pauseButton.addEventListener('click', () => {
+        pauseAudio(song)})
+
+    songName.append(songButton, playButton, pauseButton)
         songButton.addEventListener('click', ()=>{
             addSong(song.id)
         })
